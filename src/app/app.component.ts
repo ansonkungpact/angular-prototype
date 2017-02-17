@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { AppState } from './app.service';
 
+import * as io from 'socket.io-client';
+
 /*
  * App Component
  * Top Level Component
@@ -25,12 +27,45 @@ export class AppComponent implements OnInit {
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
 
+  public socket: SocketIOClient.Socket;
+
   constructor(
     public appState: AppState
   ) {}
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+
+    let socketUrl = 'http://localhost:4000';
+    this.socket = io.connect(socketUrl);
+
+    this.socket.on('connect',
+      () => this.connect()
+    );
+
+    this.socket.emit('sendchat', 'access from angularjs',
+      () => this.sendMessage()
+    );
+
+    this.socket.on('disconnect',
+      () => this.disconnect()
+    );
+  }
+
+  // Handle connection opening
+  private connect() {
+    console.log('Connected to');
+    this.socket.emit('adduser');
+  }
+
+  // Handle sending messages
+  private sendMessage() {
+    console.log('sending message');
+  }
+
+  // Handle connection disconnecting
+  private disconnect() {
+    console.log('Disconnected from');
   }
 
 }
