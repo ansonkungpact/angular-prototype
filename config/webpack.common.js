@@ -193,7 +193,6 @@ module.exports = function (options) {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
           use: 'file-loader'
         }
-
       ],
 
     },
@@ -204,6 +203,11 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+      }),
       new AssetsPlugin({
         path: helpers.root('dist'),
         filename: 'webpack-assets.json',

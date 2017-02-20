@@ -1,10 +1,21 @@
 <!-- <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre> -->
 
 <footer>
-  <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
+  <!-- <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span> -->
   <div>
     <a [href]="url">
-      <img [src]="angularclassLogo" width="25%">
     </a>
   </div>
 </footer>
+
+<div id="chatbot">
+  <div class="chat-window" role="content">
+      <ul #chatList class="chat-list" aria-live="polite" aria-atomic="false"></ul>
+    </div>
+  <form>
+    <div class="chat-input">
+      <input #inputmsg type="text">
+    </div>
+    <button type="submit" class="btn chat-send" (click)="sendMessage(inputmsg)">Send</button>
+  </form>
+</div>

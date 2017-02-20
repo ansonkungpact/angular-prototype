@@ -45,6 +45,7 @@ export class AboutComponent implements OnInit {
     this.asyncDataWithWebpack();
   }
   private asyncDataWithWebpack() {
+    console.log('testing');
     // you can also async load mock data with 'es6-promise-loader'
     // you would do this if you don't want the mock-data bundled
     // remember that 'es6-promise-loader' is a promise
