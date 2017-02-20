@@ -33,7 +33,7 @@ export class FooterComponent implements OnInit {
     var chatbot = $('#chatbot');
     var chatWindow = chatbot.find('.chat-window');
     console.log($('body'));
-    let socketUrl = 'http://localhost:4000';
+    let socketUrl = 'https://ftlife-prototype.herokuapp.com/';
     this.socket = io.connect(socketUrl);
 
     // connect to socket.
